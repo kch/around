@@ -20,12 +20,12 @@ by another name. No boilerplate needed.
 ## `def` methods
 * `def_around`
 * `class_def_around`
-* `eigenclass_def_around`
+* `singleton_class_def_around`
 
 ## `disable` methods
 * `around_disable_feature`
 * `class_around_disable_feature`
-* `eigenclass_around_disable_feature`
+* `singleton_class_around_disable_feature`
 
 
 # License & Copyright

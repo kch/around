@@ -2,16 +2,16 @@
 # encoding: UTF-8
 
 class Object
-  def eigenclass_def_around method_name, feature_name, &method_definition
+  def singleton_class_def_around method_name, feature_name, &method_definition
     class << self; self end.def_around method_name, feature_name, &method_definition
   end
 
-  def eigenclass_around_disable_feature feature_name
+  def singleton_class_around_disable_feature feature_name
     class << self; self end.around_disable_feature feature_name
   end
 
-  alias_method :def_around, :eigenclass_def_around
-  alias_method :around_disable_feature, :eigenclass_around_disable_feature
+  alias_method :def_around, :singleton_class_def_around
+  alias_method :around_disable_feature, :singleton_class_around_disable_feature
 end
 
 class Class
@@ -30,8 +30,8 @@ class Class
     def_around method_name, feature_name, &method_definition
   end
 
-  alias_method :class_def_around, :eigenclass_def_around
-  alias_method :class_around_disable_feature, :eigenclass_around_disable_feature
+  alias_method :class_def_around, :singleton_class_def_around
+  alias_method :class_around_disable_feature, :singleton_class_around_disable_feature
 
   def around_disable_feature feature_name
     rx = /^(.+)_without_#{feature_name}([?!])?$/
